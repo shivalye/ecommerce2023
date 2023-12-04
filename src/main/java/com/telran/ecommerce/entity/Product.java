@@ -48,3 +48,22 @@ public class Product {
         this.rating = 0;
     }
 }
+
+enum Color {
+    RED("red"), GREEN("green"), BLACK("black"), WHITE("white"), BROWN("brown"), YELLOW("yellow"), BLUE("blue"), ORANGE("orange");
+
+    final String color;
+
+    Color(String color) {
+        this.color = color;
+    }
+}
+
+enum CategoryName {
+    LIVING_ROOM("living room"), KITCHEN("kitchen"), BATHROOM("bathroom");
+    final String categoryName;
+
+    CategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+}
