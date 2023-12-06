@@ -1,28 +1,68 @@
 package com.telran.ecommerce.entity;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import java.time.LocalDate;
 import java.util.LinkedHashMap;
 import java.util.UUID;
 
+@Getter
+@ToString
+@EqualsAndHashCode
 public class Order {
-    private UUID orderId;
-    private UUID userId;
-    private LinkedHashMap products;
-    private double totalSum;
-    private Shipping shipping;
-    private String contact;
-    private String address;
-    private String phoneNumber;
-    private String email;
-    private LocalDate dateOrder;
-    private PaymentMethod paymentMethod;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private final UUID orderId;
+    private final UUID userId;
+    private final LinkedHashMap<UUID, Integer> products;
+    private final double totalSum;
+    private final Shipping shipping;
+    private final String contact;
+    private final String address;
+    private final String phoneNumber;
+    private final String email;
+    private final LocalDate dateOrder;
+    private final PaymentMethod paymentMethod;
+    @Setter
     private Status status;
+
+    public Order(UUID orderId, UUID userId, LinkedHashMap products, double totalSum, Shipping shipping, String contact,
+                 String address, String phoneNumber, String email, PaymentMethod paymentMethod, Status status) {
+        this.orderId = orderId;
+        this.userId = userId;
+        this.products = products;
+        this.totalSum = totalSum;
+        this.shipping = shipping;
+        this.contact = contact;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.dateOrder = LocalDate.now();
+        this.paymentMethod = paymentMethod;
+        this.status = status;
+    }
 }
 
-enum PaymentMethod{
-    CREDIT_CARD, PAYPAL;
+enum PaymentMethod {
+    CREDIT_CARD("credit card"), PAYPAL("paypal");
+    final String paymentMethod;
+
+    PaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
 }
 
-enum Status{
-    PREPARED_TO_DELIVERY, IN_DELIVERY, DELIVERED, FINISHING;
+enum Status {
+    PREPARED_TO_DELIVERY("prepared to delivery"), AT_LOCAL_DELIVERY_COMPANY("at local delivery company"), DELIVERED("delivered"), FINISHED("finished");
+    final String status;
+
+    Status(String status) {
+        this.status = status;
+    }
 }

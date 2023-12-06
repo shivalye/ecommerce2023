@@ -19,17 +19,18 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.UUID)
     private final UUID cartId;
     private final UUID userId;
+
     @Setter
-    private LinkedHashMap products;
+    private LinkedHashMap<UUID, Integer> products = new LinkedHashMap<>();
     @Setter
     private double totalSum;
     @Setter
     private Shipping shipping;
 
-    public Cart(UUID cartId, UUID userId, double totalSum, Shipping shipping) {
+    public Cart(UUID cartId, UUID userId, UUID productId, int amount, double totalSum, Shipping shipping) {
         this.cartId = cartId;
         this.userId = userId;
-        this.products = new LinkedHashMap<UUID, Integer>();
+        products.put(productId, amount);
         this.totalSum = totalSum;
         this.shipping = shipping;
     }
