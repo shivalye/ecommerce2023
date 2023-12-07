@@ -1,5 +1,6 @@
 package com.telran.ecommerce.entity;
 
+import com.telran.ecommerce.types.Role;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -45,14 +46,5 @@ public class User {
         this.email = email;
         this.billingAddress = billingAddress;
         this.shippingAddress = shippingAddress;
-    }
-}
-
-enum Role {
-    USER("user"), ADMIN("admin"), MODERATOR("moderator");
-    final String role;
-
-    Role(String role) {
-        this.role = role;
     }
 }

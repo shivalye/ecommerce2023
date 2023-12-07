@@ -1,5 +1,8 @@
 package com.telran.ecommerce.entity;
 
+import com.telran.ecommerce.types.PaymentMethod;
+import com.telran.ecommerce.types.Shipping;
+import com.telran.ecommerce.types.Status;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -32,7 +35,7 @@ public class Order {
     @Setter
     private Status status;
 
-    public Order(UUID orderId, UUID userId, LinkedHashMap products, double totalSum, Shipping shipping, String contact,
+    public Order(UUID orderId, UUID userId, LinkedHashMap<UUID, Integer> products, double totalSum, Shipping shipping, String contact,
                  String address, String phoneNumber, String email, PaymentMethod paymentMethod, Status status) {
         this.orderId = orderId;
         this.userId = userId;
@@ -49,20 +52,3 @@ public class Order {
     }
 }
 
-enum PaymentMethod {
-    CREDIT_CARD("credit card"), PAYPAL("paypal");
-    final String paymentMethod;
-
-    PaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
-}
-
-enum Status {
-    PREPARED_TO_DELIVERY("prepared to delivery"), AT_LOCAL_DELIVERY_COMPANY("at local delivery company"), DELIVERED("delivered"), FINISHED("finished");
-    final String status;
-
-    Status(String status) {
-        this.status = status;
-    }
-}
