@@ -1,5 +1,6 @@
 package com.telran.ecommerce.entity;
 
+import com.telran.ecommerce.types.Shipping;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -36,11 +37,3 @@ public class Cart {
     }
 }
 
-enum Shipping {
-    FREE_SHIPPING("free shipping"), EXPRESS_SHIPPING("express shipping"), PICK_UP("pick up");
-    final String shipping;
-
-    Shipping(String shipping) {
-        this.shipping = shipping;
-    }
-}
