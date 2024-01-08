@@ -5,33 +5,31 @@ import com.telran.ecommerce.types.Color;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 
 import java.time.LocalDate;
 import java.util.UUID;
-
+@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "productId")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID productId;
-    private final String productName;
+    private String productName;
     @Setter
     private double price;
     public CategoryName categoryName;
-    private final String measurements;
+    private String measurements;
     public Color color;
     @Setter
     private int amount;
     @Setter
     private int discount;
-    private final LocalDate creationDate;
+    private LocalDate creationDate;
     @Setter
     private LocalDate dateOfferExpires;
     @Setter
