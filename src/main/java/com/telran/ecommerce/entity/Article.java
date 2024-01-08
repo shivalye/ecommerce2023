@@ -1,5 +1,4 @@
 package com.telran.ecommerce.entity;
-import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -8,11 +7,12 @@ import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
+
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode
-@Entity
+//@Entity
 @Document(collection = "articles")
 public class Article {
    @Id
@@ -24,7 +24,8 @@ public class Article {
     private Date date;
     private boolean featured;
 
-    public Article(int index, String title, String author, String[] text,
+
+        public Article(int index, String title, String author, String[] text,
                    String[] images, Date date, boolean featured)
     {
         this.index = index;
