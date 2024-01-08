@@ -1,5 +1,7 @@
 package com.telran.ecommerce.entity;
 
+import com.telran.ecommerce.types.CategoryName;
+import com.telran.ecommerce.types.Color;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -7,6 +9,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -49,20 +52,3 @@ public class Product {
     }
 }
 
-enum CategoryName {
-    LIVING_ROOM("living room"), KITCHEN("kitchen"), BATH_ROOM("bath room");
-    final String categoryName;
-
-    CategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-}
-
-enum Color {
-    RED("red"), GREEN("green"), BLACK("black"), WHITE("white"), BROWN("brown"), YELLOW("yellow"), BLUE("blue"), ORANGE("orange");
-    final String color;
-
-    Color(String color) {
-        this.color = color;
-    }
-}
