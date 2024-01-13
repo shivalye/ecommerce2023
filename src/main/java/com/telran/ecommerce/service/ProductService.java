@@ -5,6 +5,7 @@ import com.telran.ecommerce.repository.ProductRepository;
 import com.telran.ecommerce.types.CategoryName;
 import com.telran.ecommerce.types.Code;
 import com.telran.ecommerce.types.Color;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,22 +18,36 @@ public class ProductService implements IProduct{
     ProductRepository productRepository;
 
     @Override
-    public UUID addProduct(String productName, double price, CategoryName categoryName, String measurements, Color color, int amount, int discount, LocalDate dateOfferExpires) {
-        return null;
+    @Transactional
+    public UUID addProduct(Product product) {
+        productRepository.save(product);
+        return product.getProductId();
     }
 
     @Override
     public Product getProduct(UUID ProductId) {
-        return null;
+        return productRepository.findById(ProductId).orElse(null);
     }
 
     @Override
+    @Transactional
     public Code changeAmountOfProduct(UUID productId, int amount) {
-        return null;
+        Product product = getProduct(productId);
+        if (product==null){
+            return Code.PRODUCT_NOT_EXIST;
+        }
+        product.setAmount(amount);
+        return Code.OK;
     }
 
     @Override
+    @Transactional
     public Code removeProduct(UUID productId) {
-        return null;
+        Product product = getProduct(productId);
+        if (product==null){
+            return Code.PRODUCT_NOT_EXIST;
+        }
+        productRepository.delete(product);
+        return Code.OK;
     }
 }

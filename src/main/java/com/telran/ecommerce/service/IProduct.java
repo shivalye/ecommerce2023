@@ -9,8 +9,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 public interface IProduct {
-    UUID addProduct(String productName, double price, CategoryName categoryName, String measurements,
-                    Color color, int amount, int discount, LocalDate dateOfferExpires);
+    UUID addProduct(Product product);
 
     Product getProduct(UUID ProductId);
 
