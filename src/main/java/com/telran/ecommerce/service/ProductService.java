@@ -2,14 +2,10 @@ package com.telran.ecommerce.service;
 
 import com.telran.ecommerce.entity.Product;
 import com.telran.ecommerce.repository.ProductRepository;
-import com.telran.ecommerce.types.CategoryName;
 import com.telran.ecommerce.types.Code;
-import com.telran.ecommerce.types.Color;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
 import java.util.UUID;
 
 @Service
@@ -25,8 +21,8 @@ public class ProductService implements IProduct{
     }
 
     @Override
-    public Product getProduct(UUID ProductId) {
-        return productRepository.findById(ProductId).orElse(null);
+    public Product getProduct(UUID productId) {
+        return productRepository.findById(productId).orElse(null);
     }
 
     @Override
