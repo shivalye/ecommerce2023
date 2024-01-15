@@ -34,4 +34,10 @@ public class ProductController {
     public Code removeProduct(@RequestParam(name = "product_id") UUID productId) {
         return productService.removeProduct(productId);
     }
+
+    @GetMapping(value = TEST)
+    public int getTest(){
+        String text = "Test passed successfully";
+        return 123;
+    }
 }

@@ -8,4 +8,5 @@ public interface ApiConstants {
     String GET_PRODUCT = "product";
     String CHANGE_AMOUNT_OF_PRODUCT = "product/change_amount";
     String REMOVE_PRODUCT = "product/remove";
+    String TEST = "TEST";
 }
