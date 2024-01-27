@@ -18,8 +18,11 @@ public class ArticleRestoreAppl
 
         ArticleRepository articleRepository = cac.getBean(ArticleRepository.class);
         List<Article> articleList;
-        articleList = articleRepository.findAll();
-        articleList.forEach(System.out::println);
+//        articleList = articleRepository.findAll();
+//        articleList.forEach(System.out::println);
+        String articleIdToDelete = "65acff25a45bd874787d166e"; // Замените на нужный ID
+        articleRepository.deleteById(articleIdToDelete);
+        System.out.println(articleRepository.findById("65acff25a45bd874787d166e").orElse(new Article()));
 
     }
 }

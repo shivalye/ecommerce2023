@@ -36,7 +36,15 @@ public class Article {
         this.date = date;
         this.featured = featured;
     }
-
+    public Article() {
+        this.id = null;
+        this.title = null;
+        this.author = null;
+        this.text = null;
+        this.images = null;
+        this.date = null;
+        this.featured = false;
+    }
     public String getDateAsString() {
         return date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
