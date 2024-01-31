@@ -36,8 +36,8 @@ public class ProductController {
     }
 
     @GetMapping(value = TEST)
-    public int getTest(){
+    public String getTest(){
         String text = "Test passed successfully";
-        return 123;
+        return "TEST OK";
     }
 }
