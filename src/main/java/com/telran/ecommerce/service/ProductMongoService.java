@@ -1,28 +1,29 @@
 package com.telran.ecommerce.service;
 
 import com.telran.ecommerce.entity.Product;
-import com.telran.ecommerce.repository.ProductJPARepository;
+import com.telran.ecommerce.repository.ProductMongoRepository;
 import com.telran.ecommerce.types.Code;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.UUID;
 
 @Service
-public class ProductService implements IProduct{
+public class ProductMongoService implements IProductMongo{
     @Autowired
-    ProductJPARepository productJPARepository;
+    ProductMongoRepository productMongoRepository;
 
     @Override
     @Transactional
     public UUID addProduct(Product product) {
-        productJPARepository.save(product);
+        productMongoRepository.save(product);
         return product.getProductId();
     }
 
     @Override
     public Product getProduct(UUID productId) {
-        return productJPARepository.findById(productId).orElse(null);
+        return productMongoRepository.findById(productId).orElse(null);
     }
 
     @Override
@@ -43,12 +44,12 @@ public class ProductService implements IProduct{
         if (product==null){
             return Code.PRODUCT_NOT_EXIST;
         }
-        productJPARepository.delete(product);
+        productMongoRepository.delete(product);
         return Code.OK;
     }
+
     @Override
-    @Transactional
-    public String testProduct(){
-        return "Service JPARepository test OK";
+    public String testProduct() {
+        return "Service MongoRepository test OK";
     }
 }

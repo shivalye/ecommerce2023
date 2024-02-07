@@ -1,14 +1,11 @@
 package com.telran.ecommerce.service;
 
-import com.telran.ecommerce.types.CategoryName;
-import com.telran.ecommerce.types.Code;
-import com.telran.ecommerce.types.Color;
 import com.telran.ecommerce.entity.Product;
+import com.telran.ecommerce.types.Code;
 
-import java.time.LocalDate;
 import java.util.UUID;
 
-public interface IProduct {
+public interface IProductMongo {
     UUID addProduct(Product product);
 
     Product getProduct(UUID productId);
@@ -16,5 +13,6 @@ public interface IProduct {
     Code changeAmountOfProduct(UUID productId, int amount);
 
     Code removeProduct(UUID productId);
+
     String testProduct();
 }
