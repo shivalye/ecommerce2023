@@ -1,12 +1,14 @@
 package com.telran.ecommerce.types;
 
-import java.io.Serializable;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
+
+@JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum CategoryName {
     LIVING_ROOM("living room"), KITCHEN("kitchen"), BATHROOM("bathroom");
-    final String categoryName;
+    private final String category;
 
-    CategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    CategoryName(String category) {
+        this.category = category;
     }
 }

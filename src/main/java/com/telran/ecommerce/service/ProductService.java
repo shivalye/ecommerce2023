@@ -17,6 +17,7 @@ public class ProductService implements IProduct{
     @Transactional
     public UUID addProduct(Product product) {
         productJPARepository.save(product);
+        System.out.println(product.getCategoryName());
         return product.getProductId();
     }
 

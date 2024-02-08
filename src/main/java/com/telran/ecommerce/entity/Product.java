@@ -18,7 +18,7 @@ import java.util.UUID;
 @Getter
 @ToString
 @EqualsAndHashCode(of = "productId")
-public class Product {
+public class Product implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID productId;
@@ -38,18 +38,18 @@ public class Product {
     @Setter
     private short rating;
 
-    public Product(UUID productId, String productName, double price, CategoryName categoryName, String measurements, Color color, int amount, int discount, LocalDate dateOfferExpires) {
-        this.productId = productId;
-        this.productName = productName;
-        this.price = price;
-        this.categoryName = categoryName;
-        this.measurements = measurements;
-        this.color = color;
-        this.amount = amount;
-        this.discount = discount;
-        this.creationDate = LocalDate.now();
-        this.dateOfferExpires = dateOfferExpires;
-        this.rating = 0;
-    }
+//    public Product(UUID productId, String productName, double price, CategoryName categoryName, String measurements, Color color, int amount, int discount, LocalDate dateOfferExpires) {
+//        this.productId = productId;
+//        this.productName = productName;
+//        this.price = price;
+//        this.categoryName = categoryName;
+//        this.measurements = measurements;
+//        this.color = color;
+//        this.amount = amount;
+//        this.discount = discount;
+//        this.creationDate = LocalDate.now();
+//        this.dateOfferExpires = dateOfferExpires;
+//        this.rating = 0;
+//    }
 }
 
